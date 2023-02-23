@@ -16,4 +16,4 @@ A free and open source word counter focused on privacy and performance.
 
 ## License
 
-[MIT](./LICENSE)
+[GNU AGPLv3](./LICENSE)
