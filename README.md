@@ -5,6 +5,7 @@ A free and open source word counter focused on privacy and performance.
 - No ads
 - Responsive design
 - No trackers
+- Automatically save text as you type
 - Lightweight (3.1KB page weight)
 - Works offline
 - Light or dark theme (based on browser's preference)
