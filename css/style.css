@@ -1,0 +1,130 @@
+:root {
+  --light: #eee;
+  --dark: #222;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: calc(1rem + 0.5vw);
+  line-height: 1.5;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  background-color: var(--light);
+  color: var(--dark);
+  padding: 2rem 1rem;
+}
+
+body > * + * {
+  margin-top: 3em;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+h1,
+h2 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+:focus {
+  outline: 0.3rem solid;
+  outline-offset: 0.3rem;
+}
+
+a {
+  color: inherit;
+}
+
+main > * + * {
+  margin-top: 2em;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 38rem;
+  min-height: max(38rem, 80vh);
+  resize: none;
+  font: inherit;
+  color: inherit;
+  font-family: var(--font-mono);
+  background: transparent;
+  border: 0.3rem solid;
+  padding: 1rem;
+}
+
+textarea:focus {
+  outline-offset: -0.8rem;
+}
+
+.counter {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.counter p:first-child {
+  margin-right: 2rem;
+}
+
+.top-keywords {
+  border: 0.06rem solid;
+  padding: 1rem;
+}
+
+.top-keywords > * + * {
+  margin-top: 0.5em;
+}
+
+ol[type="1"] {
+  padding-left: 2em;
+  padding-inline-start: 2em;
+}
+
+ol span {
+  font-family: var(--font-mono);
+}
+
+footer {
+  padding-top: 1rem;
+  border-top: 0.06rem solid;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light: #222;
+    --dark: #eee;
+  }
+}
+
+@media (prefers-contrast: less) {
+  body {
+    filter: contrast(70%) saturate(70%);
+  }
+}
