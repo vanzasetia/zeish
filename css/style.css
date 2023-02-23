@@ -29,17 +29,17 @@ body > * + * {
 }
 
 .sr-only {
-  border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }
 
 h1,
@@ -99,16 +99,31 @@ textarea:focus {
 }
 
 .top-keywords > * + * {
-  margin-top: 0.5em;
+  margin-top: 1em;
 }
 
 ol[type="1"] {
-  padding-left: 2em;
-  padding-inline-start: 2em;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+ol > * {
+  flex-basis: 14rem;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border: 0.06rem solid;
+  padding: 1rem;
 }
 
 ol span {
+  display: block;
   font-family: var(--font-mono);
+}
+
+li span:first-child {
+  font-weight: 700;
 }
 
 footer {

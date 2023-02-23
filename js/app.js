@@ -81,7 +81,7 @@
           const total = singleWordStatistic[1];
           return `<li>
                     <span>${word}</span>
-                    <span>${total}</span>
+                    <span>Total: ${total}</span>
                   </li>`;
         })
         .join("");
