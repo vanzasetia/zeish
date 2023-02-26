@@ -4,13 +4,16 @@
   const textField = document.querySelector("textarea");
   const counter = `
   <div class="counter">
-    <p>Characters: <span class="js-total-characters">0</span></p>
+    <h2>Statistics</h2>
+    <p>Characters (with spaces): <span class="js-total-characters">0</span></p>
+    <p>Characters (no spaces): <span class="js-total-characters-without-spaces">0</span></p>
     <p>Words: <span class="js-total-words">0</span></p>
+    <p>Lines: <span class="js-total-lines">0</span></p>
   </div>
   `;
   const topKeywords = `
   <div class="top-keywords">
-    <h2>Top 10 keywords</h2>
+    <h2>Top keywords</h2>
     <ol type="1"></ol>
   </div>
   `;
@@ -18,12 +21,26 @@
   textField.insertAdjacentHTML("afterend", counter);
 
   const totalCharacters = document.querySelector(".js-total-characters");
+  const totalCharactersWithoutSpaces = document.querySelector(
+    ".js-total-characters-without-spaces"
+  );
   const totalWords = document.querySelector(".js-total-words");
+  const totalLines = document.querySelector(".js-total-lines");
   const wordRegEx = /[a-zA-Z\d]{1,}/g;
 
   const countCharacters = () => {
     const text = textField.value;
     totalCharacters.textContent = text.length;
+  };
+
+  const countCharactersWithoutSpaces = () => {
+    const text = textField.value;
+    const textWithoutSpaces = text.match(/\S/g);
+    if (textWithoutSpaces === null) {
+      totalCharactersWithoutSpaces.textContent = 0;
+    } else {
+      totalCharactersWithoutSpaces.textContent = textWithoutSpaces.length;
+    }
   };
 
   const countWords = () => {
@@ -33,6 +50,17 @@
       totalWords.textContent = 0;
     } else {
       totalWords.textContent = words.length;
+    }
+  };
+
+  const countLines = () => {
+    const text = textField.value;
+    const lines = text.match(/\n/g);
+    const FIRST_LINE = 1;
+    if (lines === null) {
+      totalLines.textContent = FIRST_LINE;
+    } else {
+      totalLines.textContent = lines.length + FIRST_LINE;
     }
   };
 
@@ -64,7 +92,7 @@
     return sortable;
   };
 
-  const showTopTenWords = () => {
+  const showTopKeywords = () => {
     const text = textField.value;
     const lowerCaseText = text.toLowerCase();
     const words = lowerCaseText.match(wordRegEx);
@@ -74,8 +102,7 @@
     } else {
       const wordsStatistic = getWordsStatistic(words);
       const sortedWordsStatistic = sortWordsStatistic(wordsStatistic);
-      const topTenWordsStatistic = sortedWordsStatistic.slice(0, 10);
-      let descriptionListHTML = topTenWordsStatistic
+      let descriptionListHTML = sortedWordsStatistic
         .map((singleWordStatistic) => {
           const word = singleWordStatistic[0];
           const total = singleWordStatistic[1];
@@ -93,14 +120,18 @@
     if (localStorage.getItem("text")) {
       textField.value = localStorage.getItem("text");
       countCharacters();
+      countCharactersWithoutSpaces();
       countWords();
-      showTopTenWords();
+      countLines();
+      showTopKeywords();
     }
   };
 
   textField.addEventListener("input", countCharacters);
+  textField.addEventListener("input", countCharactersWithoutSpaces);
   textField.addEventListener("input", countWords);
+  textField.addEventListener("input", countLines);
   textField.addEventListener("input", saveText);
-  textField.addEventListener("input", showTopTenWords);
+  textField.addEventListener("input", showTopKeywords);
   document.addEventListener("DOMContentLoaded", loadText);
 })();

@@ -51,7 +51,7 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    addResourcesToCache(["/index.html", "/css/style.min.css", "/js/app.min.js"])
+    addResourcesToCache(["/index.html", "/style.css", "/app.js"])
   );
 });
 

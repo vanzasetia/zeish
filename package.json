@@ -1,0 +1,20 @@
+{
+  "name": "simple-word-counter",
+  "version": "1.0.0",
+  "description": "A free and open source word counter focused on privacy and performance.",
+  "scripts": {
+    "prettier": "prettier --write .",
+    "minify:html": "html-minifier --collapse-boolean-attributes --collapse-whitespace --remove-comments --remove-redundant-attributes --remove-script-type-attributes --minify-css true --minify-js true --output-dir ./ --input-dir ./ --output index.html --file-ext html",
+    "minify:css": "purifycss ./style.css ./index.html ./app.js --min --out ./style.css --info",
+    "help": "html-minifier --help",
+    "minify:js": "terser ./app.js --output ./app.js --compress --mangle",
+    "build": "npm-run-all minify:html minify:css minify:js"
+  },
+  "devDependencies": {
+    "html-minifier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4",
+    "purify-css": "^1.2.5",
+    "terser": "^5.16.5"
+  }
+}
