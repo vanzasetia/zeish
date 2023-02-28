@@ -1,6 +1,8 @@
 :root {
-  --light: #eee;
-  --dark: #222;
+  --black: #222;
+  --white: #eee;
+  --light: var(--white);
+  --dark: var(--black);
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
     monospace;
 }
@@ -26,6 +28,10 @@ body {
 
 body > * + * {
   margin-top: 3em;
+}
+
+main > * + * {
+  margin-top: 2em;
 }
 
 .sr-only {
@@ -60,8 +66,10 @@ a {
   color: inherit;
 }
 
-main > * + * {
-  margin-top: 2em;
+button,
+textarea {
+  color: inherit;
+  font: inherit;
 }
 
 textarea {
@@ -70,24 +78,43 @@ textarea {
   min-height: 38rem;
   min-height: max(38rem, 80vh);
   resize: none;
-  font: inherit;
-  color: inherit;
   font-family: var(--font-mono);
   background: transparent;
   border: 0.3rem solid;
   padding: 1rem;
 }
 
+textarea + button {
+  margin-top: 1rem;
+}
+
 textarea:focus {
   outline-offset: -0.8rem;
 }
 
-.counter h2,
-.top-keywords h2 {
+button {
+  cursor: pointer;
+  background: transparent;
+  border: 0.3rem solid;
+  padding: 2rem;
+  display: block;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+button:focus {
+  background-color: var(--dark);
+  color: var(--light);
+  outline-color: var(--dark);
+}
+
+.counter__title,
+.leaderboard__title {
   margin-bottom: 1rem;
 }
 
-ol[type="1"] {
+.leaderboard__list {
   list-style: none;
   display: flex;
   gap: 1rem;
@@ -98,7 +125,7 @@ ol[type="1"] {
   border: 0.06rem solid;
 }
 
-ol > * {
+.leaderboard__item {
   flex-basis: 14rem;
   flex-grow: 1;
   flex-shrink: 0;
@@ -106,12 +133,17 @@ ol > * {
   padding: 1rem;
 }
 
-ol span {
+.leaderboard__item--three-words {
+  flex-basis: 20rem;
+}
+
+.leaderboard__word,
+.leaderboard__total {
   display: block;
   font-family: var(--font-mono);
 }
 
-li span:first-child {
+.leaderboard__word {
   font-weight: 700;
 }
 
@@ -122,8 +154,8 @@ footer {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --light: #222;
-    --dark: #eee;
+    --light: var(--black);
+    --dark: var(--white);
   }
 }
 
